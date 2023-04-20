@@ -110,15 +110,12 @@
                   <p><i class="fa-solid fa-copy"></i><span class="mx-1">copy code</span></p>
                 </div>
                 <div class="code-sheet" id="target">
-                  <p class="msg" id="msg">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore maiores
-                    nostrum recusandae
-                    magni porro ducimus sit, unde delectus eum quas, dolorum voluptatem, quidem sed modi expedita
-                    corrupti adipisci facilis aspernatur. Corporis illo recusandae delectus saepe quas praesentium
-                    placeat nemo ullam cupiditate est voluptatum consequatur ea et, perspiciatis laborum voluptate
-                    voluptas rem reiciendis eius ipsa aut. Et beatae odio id, eaque officia aut culpa quis impedit
-                    illum cupiditate distinctio nulla doloribus quod assumenda, animi unde voluptatibus modi aperiam
-                    voluptate eligendi ipsum placeat. Sapiente, similique saepe quam temporibus facilis cum, dolor
-                    voluptatem fuga earum officia perspiciatis deserunt vitae fugiat soluta optio nobis?</p>
+                  {% if answer_response %}
+                  <div>
+                    <h2>Result : </h2>
+                    {{answer_response}}
+                  </div>
+                  {% endif %}
                  
                 </div>
               </div>
@@ -141,12 +138,7 @@
 
               </div>
 
-              {% if answer_response %}
-              <div>
-                <h2>Result : </h2>
-                {{answer_response}}
-              </div>
-              {% endif %}
+             
             </div>
 
             <div class="input-checker">
@@ -193,21 +185,7 @@
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- js -->
   
-  <script>
-     const msg = document.getElementById('msg')
-    const target = document.getElementById('target')
-    var i = 0;
-    var txt = 'Lorem ipsum dummy text blabla.';
-    var speed = 50;
-    
-    function typeWriter() {
-      if (i < txt.length) {
-        document.getElementById("demo").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-    </script>
+ 
 </body>
 
 </html>
