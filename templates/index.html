@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <!-- css -->
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- font awesome -->
   <title>Document</title>
 </head>
 
@@ -17,31 +20,151 @@
   <div class="container-fluid">
     <div class="row">
       <div class="side-bg"></div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="sidebar">
-          hjgk
+          <div class="top-sidebar">
+            <div class="side-btn-1">
+              <i class="fa-solid fa-plus"></i> <span>New Chat</span>
+            </div>
+            <div class="history-text">
+              <div class="btn-row">
+                <span>
+                  <i class="fa-solid fa-message"></i>
+                  <span> Html Login Form</span>
+                </span>
+                <span>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  <i class="fa-solid fa-trash"></i>
+                </span>
+              </div>
+
+            </div>
+          </div>
+          <div class="bottom-sidebar">
+            <hr>
+            <ul>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-trash"></i>
+                  <span>Clear Conversation</span>
+                </span>
+                <span></span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-user"></i>
+                  <span>Upgrade to Plus</span>
+                </span>
+                <span class="notifys">New</span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-gear"></i>
+                  <span>Settings</span>
+                </span>
+                <span></span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-mars-stroke"></i>
+                  <span>Get Help</span>
+                </span>
+                <span></span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <span>Logout</span>
+                </span>
+                <span></span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="text-hightest"></div>
+      <div class="col-md-9">
+        <div class="container">
+          <div class="row">
+            <div class="answer-shower">
+              <div class="top-user">
+                <div class="user-profile">
+                  <span class="d-flex"><i class="fa-solid fa-user dgs"></i> <span class="mx-3">html login
+                      form</span></span>
+                  <span class="edit-icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                </div>
+              </div>
+              <hr>
+              <div class="second">
+                <p class="d-flex align-items-center "><i class="fa-regular fa-comment rocket"></i><span>Sure, here's
+                    an example of an HTML login form:</span></p>
+                <p class="action-ico">
+                  <i class="fa-solid fa-copy"></i>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <i class="fa-solid fa-thumbs-down"></i>
+                </p>
+              </div>
 
-          <div class="answer-shower">
-            {% if answer_response %}
-            <div>
-              <h2>Result : </h2>
-              {{answer_response}}
+              <div class="codebox">
+                <div class="codebox-top">
+                  <p>HTML</p>
+                  <p><i class="fa-solid fa-copy"></i><span class="mx-1">copy code</span></p>
+                </div>
+                <div class="code-sheet" id="target">
+                  <p class="msg" id="msg">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore maiores
+                    nostrum recusandae
+                    magni porro ducimus sit, unde delectus eum quas, dolorum voluptatem, quidem sed modi expedita
+                    corrupti adipisci facilis aspernatur. Corporis illo recusandae delectus saepe quas praesentium
+                    placeat nemo ullam cupiditate est voluptatum consequatur ea et, perspiciatis laborum voluptate
+                    voluptas rem reiciendis eius ipsa aut. Et beatae odio id, eaque officia aut culpa quis impedit
+                    illum cupiditate distinctio nulla doloribus quod assumenda, animi unde voluptatibus modi aperiam
+                    voluptate eligendi ipsum placeat. Sapiente, similique saepe quam temporibus facilis cum, dolor
+                    voluptatem fuga earum officia perspiciatis deserunt vitae fugiat soluta optio nobis?</p>
+                 
+                </div>
+              </div>
+              <div class="add-lines">
+                In this example, we have two input fields: one for the username and another for the password. Both
+                fields are required, so the user will be prompted to fill them in if they try to submit the form
+                without entering any information.
+                <br><br>
+                The label elements are used to provide a label for each input field, which can help make the form more
+                accessible to users who rely on screen readers.
+                <br><br>
+                The input elements use the type attribute to specify the type of input field. In this case, we're
+                using type="text" for the username field and type="password" for the password field. The id attribute
+                is used to uniquely identify each input field, and the name attribute is used to specify the name of
+                the field when the form is submitted.
+                <br><br>
+                Finally, the submit button is used to submit the form to the server. When the button is clicked, the
+                form data will be sent to the URL specified in the action attribute of the form element (which is not
+                shown in this example).
+
+              </div>
+
+              {% if answer_response %}
+              <div>
+                <h2>Result : </h2>
+                {{answer_response}}
+              </div>
+              {% endif %}
             </div>
-            {% endif %}
-          </div>
 
-          <div class="input-checker">
-           <center>
-            <form action="/" method="post"> {% csrf_token %}
-              <input type="text" name="query" id="query" required>
-              <input type="submit" value="Submit">
-            </form>
-           </center>
+            <div class="input-checker">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                    <form action="/" method="post"> {% csrf_token %}
+                      <div class="inp-box">
+                        <input type="text" name="query" id="query" placeholder="Send a message" required>
+                        <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -69,6 +192,22 @@
   <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- js -->
+  
+  <script>
+     const msg = document.getElementById('msg')
+    const target = document.getElementById('target')
+    var i = 0;
+    var txt = 'Lorem ipsum dummy text blabla.';
+    var speed = 50;
+    
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("demo").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    </script>
 </body>
 
 </html>
