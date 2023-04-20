@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/" method="post"> {% csrf_token %}
+    <input type="text" name="query" id="query" required>
+    <input type="submit" value="Submit">
+  </form>
+  {% if answer_response %}
+    <div>
+      <h2>Result : </h2>
+      {{answer_response}}
+    </div>
+  {% endif %}
+</body>
+</html>
