@@ -13,7 +13,7 @@
   <!-- font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- font awesome -->
-  <title>Document</title>
+  <title>Chatgpt</title>
 </head>
 
 <body>
@@ -86,6 +86,7 @@
         <div class="container">
           <div class="row">
             <div class="answer-shower">
+              {% if answer_response %}
               <div class="top-user">
                 <div class="user-profile">
                   <span class="d-flex"><i class="fa-solid fa-user dgs"></i> <span class="mx-3">html login
@@ -106,17 +107,20 @@
 
               <div class="codebox">
                 <div class="codebox-top">
-                  <p>HTML</p>
-                  <p><i class="fa-solid fa-copy"></i><span class="mx-1">copy code</span></p>
+                  <p id="serach-topic"></p>
+                  <p onclick="copyFunction()"><i class="fa-solid fa-copy"></i><span class="mx-1">copy code</span></p>
                 </div>
-                <div class="code-sheet" id="target">
-                  {% if answer_response %}
+                <div class="code-sheet">
+
                   <div>
-                    <h2>Result : </h2>
-                    {{answer_response}}
+                    <div id="typewriter" class='typewriter'>
+                      {{answer_response}}
+                    </div>
+
                   </div>
-                  {% endif %}
-                 
+
+
+
                 </div>
               </div>
               <div class="add-lines">
@@ -137,9 +141,9 @@
                 shown in this example).
 
               </div>
-
-             
+              {% endif %}
             </div>
+
 
             <div class="input-checker">
               <div class="container">
@@ -184,8 +188,97 @@
   <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- js -->
-  
+  <script>
+    const serachTopic = document.getElementById('serach-topic')
+    function setupTypewriter(t) {
+      var HTML = t.innerHTML;
+
+      t.innerHTML = "";
+
+      var cursorPosition = 0,
+        tag = "",
+        writingTag = false,
+        tagOpen = false,
+        typeSpeed = 500,
+        tempTypeSpeed = 0;
+
+      var type = function () {
+
+        if (writingTag === true) {
+          tag += HTML[cursorPosition];
+        }
+
+        if (HTML[cursorPosition] === "<") {
+          tempTypeSpeed = 0;
+          if (tagOpen) {
+            tagOpen = false;
+            writingTag = true;
+          } else {
+            tag = "";
+            tagOpen = true;
+            writingTag = true;
+            tag += HTML[cursorPosition];
+          }
+        }
+        if (!writingTag && tagOpen) {
+          tag.innerHTML += HTML[cursorPosition];
+        }
+        if (!writingTag && !tagOpen) {
+          if (HTML[cursorPosition] === " ") {
+            tempTypeSpeed = 0;
+          }
+          else {
+            tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+          }
+          t.innerHTML += HTML[cursorPosition];
+        }
+        if (writingTag === true && HTML[cursorPosition] === ">") {
+          tempTypeSpeed = (Math.random() * typeSpeed) + 500;
+          writingTag = false;
+          if (tagOpen) {
+            var newSpan = document.createElement("span");
+            t.appendChild(newSpan);
+            newSpan.innerHTML = tag;
+            tag = newSpan.firstChild;
+          }
+        }
+
+        cursorPosition += 1;
+        if (cursorPosition < HTML.length - 1) {
+          setTimeout(type, tempTypeSpeed);
+        }
+
+      };
+
+      return {
+        type: type
+      };
+    }
+
+    var typer = document.getElementById('typewriter');
+
+    typewriter = setupTypewriter(typewriter);
+
+    typewriter.type();
+
+    if (typewriter === "``` ```") {
+      serachTopic.innerHTML = "Python"
+    }
+   
+  </script>
+  <script>
+     function copyFunction(e) {
+      e.preventDefault() 
+     
+     const inputsd = document.querySelector('.typewriter');
+     inputsd.focus();
+     inputsd.select();
+     
+   
+       }
+  </script>
  
+
 </body>
 
 </html>
