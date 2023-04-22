@@ -18,34 +18,114 @@
 </head>
 
 <body>
-<div class="answer-chat">
-
-
-  {% if answer_response %}
-  <div class="ques">
-    <div id="question">
-      
-    </div>
-  </div>
-  <div class="check-answer">
-    {{answer_response}}
-    <div class="copy-coder">
-      <p class="check-p"><i class="fa-solid fa-copy"></i>copycode</p>
-     </div>
-  </div>
-  {% endif %} 
-</div>
-<div class="inp-forms-in">
-<div class="inp-input-box">
-  <form action="/" method="post"> {% csrf_token %}
-    <img src="{% static 'images/logodark.png' %}" alt="logo">
-    <input type="text" name="query" id="query"  placeholder="Ask me anything.." required>
-    <button type="submit" value="Submit" onclick="questions()" id="sub-btn"><i class="fa-regular fa-paper-plane"></i></button>
-  </form>
+ 
+ <div class="screenmode">
+  <div class="vg"></div>
+  <div class="container-fluid">
+    <div class="d-flex">
+      <div class="sidebar">
+        <div class="top-bar">
+          <div class="db sl-pl sidepush" onclick="sidepush()">
+            <span class="sidepush">></span>
+            
+          </div>
+          <div class="db sl-pl sidepull" onclick="sidepull()">
+            <span class="sidepush"><</span>
+          </div>
+         <div class="notify-lines">
+          <div class="db">
+            <i class="fa-solid fa-message"></i>
+          </div>
+          <div class="text-notify">
+            <div class="text-point">
+              <span>
+                Login Html Form
+              </span>
+              <span>
+                <i class="fa-solid fa-pen-to-square"></i>
+                <i class="fa-solid fa-trash"></i>
+              </span>
+            </div>
+          </div>
+         </div>
+        </div>
+        
+       <div class="bottom-bar">
+        <hr style="color:#fff">
+       <div class="setter">
+        <div class="db">
+          <i class="fa-solid fa-gear"></i>      
+        </div>
+        <div class="texs-line">
+           <span> Settings</span>
+        </div>
+        <div class=""></div>
+       </div>
   
-    
-  </div>
-</div>
+       <div class="setter">
+        <div class="db">
+          <i class="fa-solid fa-trash"></i>     
+        </div>
+        <div class="texs-line1">
+           <span>Clear Conversation</span>
+        </div>
+        <div class=""></div>
+       </div>
+  
+       <div class="setter">
+        <div class="db">
+          <i class="fa-solid fa-right-from-bracket"></i>   
+        </div>
+        <div class="texs-line2">
+           <span>Logout</span>
+        </div>
+        <div class=""></div>
+       </div>
+       <!-- <div class="db sl-pl dark" onclick="Dark()">
+        <span class="sidepush"><i class="fa-solid fa-moon"></i></span>
+        
+      </div>
+      <div class="db sl-pl white" onclick="White()">
+        <span class="sidepush">
+          <i class="fa-solid fa-brightness-low"></i>
+        </span>
+      </div> -->
+       </div>
+       
+      
+      </div>
+      <div class="main-chat">
+        <div class="answer-chat">
+          {% if answer_response %}
+          <div class="ques">
+            <div id="question">
+      
+            </div>
+          </div>
+          <div class="check-answer">
+            <p id="myInput">
+              {{answer_response}}
+            </p>
+            <div class="copy-coder">
+              <p class="check-p" onclick="myFunction()"><i class="fa-solid fa-copy"></i>copycode</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        <div class="inp-forms-in">
+          <div class="inp-input-box">
+            <form action="/" method="post"> {% csrf_token %}
+              <img src="{% static 'images/logodark.png' %}" alt="logo">
+              <input type="text" name="query" id="query" placeholder="Ask me anything.." required>
+              <button type="submit" value="Submit" id="sub-btn" onkeyup="valu()"><i
+                  class="fa-regular fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+ </div>
 
 
 
@@ -73,16 +153,78 @@
   <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- js -->
-<script>
- function questions(){
-  const question = document.getElementById('question')
-  const query = document.getElementById('query').value
-  question.innerHTML=query
- }
- 
- 
-</script>
- 
+  <script>
+
+
+
+
+
+    /* Select text area by id*/
+   
+      const subBtn = document.getElementById('sub-btn')
+    const Text = document.getElementById('query')
+    subBtn.addEventListener('click', () => {
+
+      /* Select the text inside text area. */
+      Text.select();
+
+      /* Copy selected text into clipboard */
+      navigator.clipboard.writeText(Text.value);
+
+      /* Set the copied text as text for 
+      div with id clipboard */
+      document.getElementById("question")
+        .innerHTML = Text.value;
+    })
+   
+
+
+  </script>
+  <script>
+    function sidepush(){
+      const sidebar = document.querySelector('.sidebar')
+      const sidepull = document.querySelector('.sidepull')
+      const sidepush = document.querySelector('.sidepush')
+      const Textnotify = document.querySelector('.text-notify')
+      const notifyLines = document.querySelector('.notify-lines')
+      const texsLine = document.querySelector('.texs-line')
+      const texsLine1 = document.querySelector('.texs-line1')
+      const texsLine2 = document.querySelector('.texs-line2')
+      sidebar.style.width="20%"
+      sidepull.style.display="block"
+      sidepush.style.display="none"
+      Textnotify.style.display='block'
+      texsLine.style.display='block'
+      texsLine1.style.display='block'
+      texsLine2.style.display='block'
+      notifyLines.style.backgroundColor='rbg(49,49,49)'
+      notifyLines.style.boxShadow='2px 2px 10px #000'
+    
+    }
+    function sidepull(){
+      const sidebar = document.querySelector('.sidebar')
+      const sidepull = document.querySelector('.sidepull')
+      const sidepush = document.querySelector('.sidepush')
+      const Textnotify = document.querySelector('.text-notify')
+      const notifyLines = document.querySelector('.notify-lines')
+      const texsLine = document.querySelector('.texs-line')
+      const texsLine1 = document.querySelector('.texs-line1')
+      const texsLine2 = document.querySelector('.texs-line2')
+      sidebar.style.width="3%"
+      sidepull.style.display="none"
+      sidepush.style.display="block"
+      Textnotify.style.display='none'
+      notifyLines.style.backgroundColor='transparent'
+      notifyLines.style.boxShadow='none'
+      texsLine.style.display='none'
+      texsLine1.style.display='none'
+      texsLine2.style.display='none'
+    
+     
+    }
+
+  </script>
+
 
 </body>
 
