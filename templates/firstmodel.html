@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- css -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <!-- css -->
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- font awesome -->
+  <title>Chatgpt</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="side-bg"></div>
+      <div class="col-md-3">
+        <div class="sidebar">
+          <div class="top-sidebar">
+            <div class="side-btn-1">
+              <i class="fa-solid fa-plus"></i> <span>New Chat</span>
+            </div>
+            <div class="history-text">
+              <div class="btn-row">
+                <span>
+                  <i class="fa-solid fa-message"></i>
+                  <span> Html Login Form</span>
+                </span>
+                <span>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  <i class="fa-solid fa-trash"></i>
+                </span>
+              </div>
+
+            </div>
+          </div>
+          <div class="bottom-sidebar">
+            <hr>
+            <ul>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-trash"></i>
+                  <span>Clear Conversation</span>
+                </span>
+                <span></span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-user"></i>
+                  <span>Upgrade to Plus</span>
+                </span>
+                <span class="notifys">New</span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-gear"></i>
+                  <span>Settings</span>
+                </span>
+                <span></span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-mars-stroke"></i>
+                  <span>Get Help</span>
+                </span>
+                <span></span>
+              </li>
+              <li class="list-lines">
+                <span>
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <span>Logout</span>
+                </span>
+                <span></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="container">
+          <div class="row">
+            <div class="answer-shower">
+              {% if answer_response %}
+              <div class="top-user">
+                <div class="user-profile">
+                  <span class="d-flex"><i class="fa-solid fa-user dgs"></i> <span class="mx-3">html login
+                      form</span></span>
+                  <span class="edit-icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                </div>
+              </div>
+              <hr>
+              <div class="second">
+                <p class="d-flex align-items-center "><i class="fa-regular fa-comment rocket"></i><span>Sure, here's
+                    an example of an HTML login form:</span></p>
+                <p class="action-ico">
+                  <i class="fa-solid fa-copy"></i>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <i class="fa-solid fa-thumbs-down"></i>
+                </p>
+              </div>
+
+              <div class="codebox">
+                <div class="codebox-top">
+                  <p id="serach-topic"></p>
+                  <p onclick="copyFunction()"><i class="fa-solid fa-copy"></i><span class="mx-1">copy code</span></p>
+                </div>
+                <div class="code-sheet">
+
+                  <div>
+                    <div id="typewriter" class='typewriter'>
+                      {{answer_response}}
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+              <div class="add-lines">
+                In this example, we have two input fields: one for the username and another for the password. Both
+                fields are required, so the user will be prompted to fill them in if they try to submit the form
+                without entering any information.
+                <br><br>
+                The label elements are used to provide a label for each input field, which can help make the form more
+                accessible to users who rely on screen readers.
+                <br><br>
+                The input elements use the type attribute to specify the type of input field. In this case, we're
+                using type="text" for the username field and type="password" for the password field. The id attribute
+                is used to uniquely identify each input field, and the name attribute is used to specify the name of
+                the field when the form is submitted.
+                <br><br>
+                Finally, the submit button is used to submit the form to the server. When the button is clicked, the
+                form data will be sent to the URL specified in the action attribute of the form element (which is not
+                shown in this example).
+
+              </div>
+              {% endif %}
+            </div>
+
+
+            <div class="input-checker">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                    <form action="/" method="post"> {% csrf_token %}
+                      <div class="inp-box">
+                        <input type="text" name="query" id="query" placeholder="Send a message" required>
+                        <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- function -->
+  <!-- <form action="/" method="post"> {% csrf_token %}
+    <input type="text" name="query" id="query" required>
+    <input type="submit" value="Submit">
+  </form>
+
+  {% if answer_response %}
+  <div>
+    <h2>Result : </h2>
+    {{answer_response}}
+  </div>
+  {% endif %} -->
+  <!-- function -->
+
+
+  <!-- js -->
+
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- js -->
+  <script>
+    const serachTopic = document.getElementById('serach-topic')
+    function setupTypewriter(t) {
+      var HTML = t.innerHTML;
+
+      t.innerHTML = "";
+
+      var cursorPosition = 0,
+        tag = "",
+        writingTag = false,
+        tagOpen = false,
+        typeSpeed = 500,
+        tempTypeSpeed = 0;
+
+      var type = function () {
+
+        if (writingTag === true) {
+          tag += HTML[cursorPosition];
+        }
+
+        if (HTML[cursorPosition] === "<") {
+          tempTypeSpeed = 0;
+          if (tagOpen) {
+            tagOpen = false;
+            writingTag = true;
+          } else {
+            tag = "";
+            tagOpen = true;
+            writingTag = true;
+            tag += HTML[cursorPosition];
+          }
+        }
+        if (!writingTag && tagOpen) {
+          tag.innerHTML += HTML[cursorPosition];
+        }
+        if (!writingTag && !tagOpen) {
+          if (HTML[cursorPosition] === " ") {
+            tempTypeSpeed = 0;
+          }
+          else {
+            tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+          }
+          t.innerHTML += HTML[cursorPosition];
+        }
+        if (writingTag === true && HTML[cursorPosition] === ">") {
+          tempTypeSpeed = (Math.random() * typeSpeed) + 500;
+          writingTag = false;
+          if (tagOpen) {
+            var newSpan = document.createElement("span");
+            t.appendChild(newSpan);
+            newSpan.innerHTML = tag;
+            tag = newSpan.firstChild;
+          }
+        }
+
+        cursorPosition += 1;
+        if (cursorPosition < HTML.length - 1) {
+          setTimeout(type, tempTypeSpeed);
+        }
+
+      };
+
+      return {
+        type: type
+      };
+    }
+
+    var typer = document.getElementById('typewriter');
+
+    typewriter = setupTypewriter(typewriter);
+
+    typewriter.type();
+
+    if (typewriter === "``` ```") {
+      serachTopic.innerHTML = "Python"
+    }
+   
+  </script>
+  <script>
+     function copyFunction(e) {
+      e.preventDefault() 
+     
+     const inputsd = document.querySelector('.typewriter');
+     inputsd.focus();
+     inputsd.select();
+     
+   
+       }
+  </script>
+ 
+
+</body>
+
+</html>
