@@ -25,11 +25,11 @@
     <div class="d-flex">
       <div class="sidebar">
         <div class="top-bar">
-          <div class="db sl-pl sidepush" onclick="sidepush()">
+          <div class="db sl-pl  sidepush" onclick="sidepush()">
             <span class="sidepush">></span>
             
           </div>
-          <div class="db sl-pl sidepull" onclick="sidepull()">
+          <div class="db  sidepull" onclick="sidepull()">
             <span class="sidepush"><</span>
           </div>
          <div class="notify-lines">
@@ -81,15 +81,15 @@
         </div>
         <div class=""></div>
        </div>
-       <!-- <div class="db sl-pl dark" onclick="Dark()">
+       <div class="db sl-pl  dark" onclick="dark()">
         <span class="sidepush"><i class="fa-solid fa-moon"></i></span>
         
       </div>
-      <div class="db sl-pl white" onclick="White()">
+      <div class="db sl-pl  white" onclick="white()">
         <span class="sidepush">
-          <i class="fa-solid fa-brightness-low"></i>
+          <i class="fa-solid fa-sun"></i>
         </span>
-      </div> -->
+      </div>
        </div>
        
       
@@ -98,9 +98,7 @@
         <div class="answer-chat">
           {% if answer_response %}
           <div class="ques">
-            <div id="question">
-      
-            </div>
+            <div id="question"></div>
           </div>
           <div class="check-answer">
             <p id="myInput">
@@ -117,7 +115,7 @@
             <form action="/" method="post"> {% csrf_token %}
               <img src="{% static 'images/logodark.png' %}" alt="logo">
               <input type="text" name="query" id="query" placeholder="Ask me anything.." required>
-              <button type="submit" value="Submit" id="sub-btn" onkeyup="valu()"><i
+              <button type="submit" value="Submit" id="sub-btn"><i
                   class="fa-regular fa-paper-plane"></i></button>
             </form>
           </div>
@@ -219,10 +217,33 @@
       texsLine.style.display='none'
       texsLine1.style.display='none'
       texsLine2.style.display='none'
-    
-     
     }
+    function white(){
+      const  screenmode = document.querySelector('.screenmode')
+      const  dark = document.querySelector('.dark')
+      const  white = document.querySelector('.white')
+      const  sidebar = document.querySelector('.sidebar')
+      const  vg = document.querySelector('.vg')
+      const  sidepush = document.querySelector('.sidepush')
+      screenmode.style.backgroundColor="white"
+      dark.style.display="block"
+      white.style.display='none'
+      vg.style.display='none'
+      sidebar.style.backgroundColor='#fff'
+      sidebar.style.color='#000'
+      sidepush.style.color='#000'
+    
 
+    }
+    function dark(){
+      const  screenmode = document.querySelector('.screenmode')
+      const  dark = document.querySelector('.dark')
+      const  white = document.querySelector('.white')
+      screenmode.style.backgroundColor="black"
+      dark.style.display="none"
+      white.style.display='block'
+      
+    }
   </script>
 
 

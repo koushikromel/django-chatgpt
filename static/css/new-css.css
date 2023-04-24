@@ -179,6 +179,9 @@ body {
   background-color:rgb(49, 49, 49);
     box-shadow: 3px 3px 10px #000;
 }
+.sl-pl-add{
+    background-color: #fff;
+}
 .bottom-bar{
     padding-bottom: 20px;
 }
@@ -253,8 +256,14 @@ body {
     background-color: #000;
 }
 .dark{
-    display: block;
+    display: none;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
 }
 .white{
-    display: block;
+    
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
 }

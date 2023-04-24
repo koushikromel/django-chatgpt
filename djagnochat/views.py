@@ -31,4 +31,4 @@ def index(request):
       _query = request.POST["query"]
       answer = (chat(_query))
       context["answer_response"] = answer
-  return render(request, "index.html", context)
+  return render(request, "chat.html", context)
